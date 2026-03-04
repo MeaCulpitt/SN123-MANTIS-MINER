@@ -725,4 +725,12 @@ if __name__ == '__main__':
             print(f"\n[{i+1}/{len(breakout_symbols)}] {symbol}:")
             breakout_models[symbol] = train_breakout_model(data, symbol, tune=True)
         else:
-            print(f"\n[{i+1}/{len(breakout_symbols)}] {symbol}:
+            print(f"\n[{i+1}/{len(breakout_symbols)}] {symbol}: ⚠️ No data")
+    
+    with open(MODEL_DIR / 'multibreakout_models_v3.pkl', 'wb') as f:
+        pickle.dump(breakout_models, f)
+    print(f"\n💾 Saved {len(breakout_models)} breakout models")
+    
+    print("\n" + "=" * 60)
+    print("✅ V3 TRAINING COMPLETE!")
+    print("=" * 60)
